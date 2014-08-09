@@ -1,4 +1,4 @@
 flyway-test-framework
 =====================
 
-Framework for testing flyway scripts
+Framework for testing flyway scripts.
