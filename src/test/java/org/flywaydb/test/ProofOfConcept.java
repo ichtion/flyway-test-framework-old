@@ -34,14 +34,14 @@ public class ProofOfConcept {
     @Ignore
     @Test
     @BeforeMigration
-    public void insertCustomer() {
+    public void insertEmployee() {
         jdbcTemplate.update("insert into employee values(:id, :name)", of("id", ID, "name", NAME));
     }
 
     @Ignore
     @Test
     @AfterMigration
-    public void assertCustomer() {
+    public void assertNameColumnWasRenamedToFirstname() {
         String firstname = jdbcTemplate.queryForObject("select firstname from employee where id=:id", of("id", ID), String.class);
 
         assertThat(firstname).isEqualTo(NAME);

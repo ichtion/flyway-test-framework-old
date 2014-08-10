@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.flywaydb.test</groupId>
-    <artifactId>flaywaydb-test</artifactId>
+    <artifactId>flywaydb-test</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
