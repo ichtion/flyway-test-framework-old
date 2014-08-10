@@ -3,7 +3,6 @@ package org.flywaydb.test;
 import org.flywaydb.core.Flyway;
 import org.flywaydb.test.runner.FlywayJUnitRunner;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -15,10 +14,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.flywaydb.test.util.TestUtils.id;
 
 @RunWith(FlywayJUnitRunner.class)
-@Migration("2")
+@MigrationVersion("2")
 @Configuration(location = "/flyway.properties")
 @CleanDb
-public class ProofOfConcept {
+public class ProofOfConceptTest {
 
     @Inject
     private Flyway flyway;
@@ -31,14 +30,12 @@ public class ProofOfConcept {
         jdbcTemplate = new NamedParameterJdbcTemplate(flyway.getDataSource());
     }
 
-    @Ignore
     @Test
     @BeforeMigration
     public void insertEmployee() {
-        jdbcTemplate.update("insert into employee values(:id, :name)", of("id", ID, "name", NAME));
+        jdbcTemplate.update("insert into employee (id, name) values(:id, :name)", of("id", ID, "name", NAME));
     }
 
-    @Ignore
     @Test
     @AfterMigration
     public void assertNameColumnWasRenamedToFirstname() {
